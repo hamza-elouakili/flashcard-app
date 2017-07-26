@@ -6,10 +6,13 @@ import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import * as reducers from './reducers'
 reducers.routing = routerReducer
+
+import * as localStore from './localStore'
+
 import App from './components/App'
 import VisibleCards from './components/VisibleCards'
 
-const store = createStore(combineReducers(reducers))
+const store = createStore(combineReducers(reducers), localStore.get())
 const history = syncHistoryWithStore(browserHistory, store)
 const routes = (
   <Route path="/" component={App}>
@@ -19,6 +22,7 @@ const routes = (
 
 function run() {
   let state = store.getState()
+  localStore.set(state, ['decks', 'cards'])
   console.log(state)
   ReactDOM.render(
     //Provider gives the child components access to the state
