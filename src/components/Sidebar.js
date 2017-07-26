@@ -1,5 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { connect } from 'react-redux'
+import { addDeck, showAddDeck, hideAddDeck } from '../actions'
+
+// 					 decks={state.decks}
+//           addingDeck={state.addingDeck}
+
+//           addDeck={name => store.dispatch(addDeck(name))}
+//           showAddDeck={() => store.dispatch(showAddDeck())}
+//           hideAddDeck={() => store.dispatch(hideAddDeck())}
+
+const mapStateToProps = ({ decks, addingDeck }) => ({
+  decks,
+  addingDeck
+})
+
+const mapDispatchToProps = dispatch => ({
+  addDeck: name => dispatch(addDeck(name)),
+  showAddDeck: () => dispatch(showAddDeck()),
+  hideAddDeck: () => dispatch(hideAddDeck())
+})
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -39,4 +59,6 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar
+//You pass two argumemts to the connect function, you get a function back and pass in the presentational compoent Sidebar in
+//and you get back a container component which you then export
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
