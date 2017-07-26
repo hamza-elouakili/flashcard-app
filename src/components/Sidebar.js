@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { addDeck, showAddDeck, hideAddDeck } from '../actions'
+import { Link } from 'react-router'
 
 // 					 decks={state.decks}
 //           addingDeck={state.addingDeck}
@@ -49,7 +50,9 @@ class Sidebar extends React.Component {
         <ul>
           {props.decks.map((deck, i) =>
             <li key={i}>
-              {deck.name}
+              <Link to={`/deck/${deck.id}`}>
+                {deck.name}
+              </Link>
             </li>
           )}
         </ul>

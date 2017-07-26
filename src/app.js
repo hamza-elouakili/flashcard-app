@@ -7,13 +7,13 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import * as reducers from './reducers'
 reducers.routing = routerReducer
 import App from './components/App'
-import Sidebar from './components/Sidebar'
+import VisibleCards from './components/VisibleCards'
 
 const store = createStore(combineReducers(reducers))
 const history = syncHistoryWithStore(browserHistory, store)
 const routes = (
   <Route path="/" component={App}>
-    {' '}
+    <Route path="/deck/:deckId" component={VisibleCards} />
   </Route>
 )
 
