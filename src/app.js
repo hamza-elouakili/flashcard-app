@@ -24,31 +24,36 @@ const store = Redux.createStore(
   })
 )
 
-// 	function (state, action){
-// 	return {
-//     cards: cards(state.cards, action),
-//     decks: decks(state.decks, action)
-//   }
-// })
+const App = props => {
+  return (
+    <div className="app">
+      {props.children}
+    </div>
+  )
+}
 
-//Whenever there is change made to the state managed by the state, all the functions which subscribe to store will be executed
-store.subscribe(() => {
-  console.log(store.getState())
-})
-
-//We want to change the state by calling the dispatch method on the store and passing it
-//an action type of what to do, and data to modify the state with how to modify the state
-store.dispatch({
-  type: 'ADD_CARD',
-  data: {
-    front: 'front',
-    back: 'back'
+const Sidebar = React.createClass({
+  render() {
+    let props = this.props
+    return (
+      <div className="sidebar">
+        <h2>All Decks</h2>
+        <ul>
+          {props.decks.map((deck, i) =>
+            <li key={i}>
+              {deck.name}
+            </li>
+          )}
+        </ul>
+        {props.addingDeck && <input ref="add" />}
+      </div>
+    )
   }
 })
 
-//We want to change the state once more, by calling the dispatch function
-//with an action type and data to modify the state with
-store.dispatch({
-  type: 'ADD_CARD',
-  data: {}
-})
+ReactDOM.render(
+  <App>
+    <Sidebar decks={[{ name: 'Deck 1' }]} addingDeck={false} />
+  </App>,
+  document.getElementById('root')
+)
