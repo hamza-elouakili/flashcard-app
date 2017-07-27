@@ -28739,10 +28739,20 @@ var CardModal = function (_React$Component) {
           card = _props.card,
           onDelete = _props.onDelete;
 
+      var style = {
+        backgroundColor: '#d3d3d3',
+        width: '50%',
+        height: '50%',
+        position: 'fixed',
+        zIndex: 1,
+        margin: '5% auto',
+        left: 0,
+        right: 0
+      };
 
       return _react2.default.createElement(
         'div',
-        { className: 'modal' },
+        { style: style, className: 'modal' },
         _react2.default.createElement(
           'h1',
           null,
@@ -29027,9 +29037,13 @@ var Toolbar = function Toolbar(_ref) {
       showAddDeck = _ref.showAddDeck,
       onFilter = _ref.onFilter;
 
+  var styleContainer = {
+    backgroundColor: '#d3d3d3',
+    padding: 10
+  };
   return _react2.default.createElement(
     'div',
-    { className: 'toolbar' },
+    { style: styleContainer, className: 'toolbar' },
     _react2.default.createElement(
       'div',
       null,

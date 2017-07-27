@@ -32,9 +32,19 @@ class CardModal extends React.Component {
 
   render() {
     let { card, onDelete } = this.props
+    let style = {
+      backgroundColor: '#d3d3d3',
+      width: '50%',
+      height: '50%',
+      position: 'fixed',
+      zIndex: 1,
+      margin: '5% auto',
+      left: 0,
+      right: 0
+    }
 
     return (
-      <div className="modal">
+      <div style={style} className="modal">
         <h1>
           {onDelete ? 'Edit' : 'New'} Card
         </h1>

@@ -9,8 +9,12 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const Toolbar = ({ deckId, showAddDeck, onFilter }) => {
+  let styleContainer = {
+    backgroundColor: '#d3d3d3',
+    padding: 10
+  }
   return (
-    <div className="toolbar">
+    <div style={styleContainer} className="toolbar">
       <div>
         <button onClick={showAddDeck}>+ New Deck</button>
       </div>
